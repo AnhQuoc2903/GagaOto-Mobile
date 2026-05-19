@@ -14,7 +14,7 @@ import {
   View,
 } from "react-native";
 
-import { getInventoriesApi } from "../../src/api/inventory.api";
+import { getInventories } from "../../src/api/inventory.api";
 import { createPaymentApi, getPaymentsApi } from "../../src/api/payment.api";
 import {
   addPartApi,
@@ -82,11 +82,17 @@ export default function WorkOrderDetail() {
   const fetchData = async () => {
     try {
       setLoading(true);
+
+      // Work order
       const res = await getWorkOrderApi(id as string);
-      const invRes = await getInventoriesApi();
-      const payRes = await getPaymentsApi(id as string);
       setData(res);
-      setInventories(invRes);
+
+      // Inventories
+      const invRes = await getInventories();
+      setInventories(invRes.data || []);
+
+      // Payments
+      const payRes = await getPaymentsApi(id as string);
       setPayments(payRes);
     } catch (err) {
       console.log(err);

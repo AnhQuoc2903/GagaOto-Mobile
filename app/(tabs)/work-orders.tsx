@@ -88,7 +88,12 @@ export default function WorkOrders() {
     <Pressable
       style={styles.card}
       onPress={() =>
-        router.push(`/work-order/work-order-detail?id=${item._id}`)
+        router.push({
+          pathname: "/work-order/work-order-detail",
+          params: {
+            id: item._id,
+          },
+        })
       }
     >
       <View style={styles.cardHeader}>
