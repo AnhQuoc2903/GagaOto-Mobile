@@ -13,14 +13,14 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 
-import { getWorkOrdersApi } from "../src/api/workOrder.api";
+import { getWorkOrdersApi } from "../../src/api/workOrder.api";
 
 import {
   getPaymentStatusColor,
   getPriorityColor,
   getStatusBgColor,
   getStatusColor,
-} from "../src/utils/StatusColor";
+} from "../../src/utils/StatusColor";
 
 export default function WorkOrders() {
   const [data, setData] = useState<any[]>([]);

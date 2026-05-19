@@ -4,9 +4,14 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 interface ImagesListProps {
   images: any[];
   onDeleteImage: (imageId: string) => void;
+  isLocked: boolean;
 }
 
-export default function ImagesList({ images, onDeleteImage }: ImagesListProps) {
+export default function ImagesList({
+  images,
+  onDeleteImage,
+  isLocked,
+}: ImagesListProps) {
   if (images.length === 0) {
     return (
       <View style={styles.emptyContainer}>
@@ -37,7 +42,8 @@ export default function ImagesList({ images, onDeleteImage }: ImagesListProps) {
               <Text style={styles.typeText}>Type: {img.type}</Text>
             </View>
             <TouchableOpacity
-              style={styles.deleteButton}
+              disabled={isLocked}
+              style={[styles.deleteButton, isLocked && styles.disabledButton]}
               onPress={() => onDeleteImage(img._id)}
             >
               <Ionicons name="trash-outline" size={20} color="#ef4444" />
@@ -133,5 +139,8 @@ const styles = StyleSheet.create({
     color: "#ef4444",
     fontWeight: "600",
     fontSize: 14,
+  },
+  disabledButton: {
+    opacity: 0.5,
   },
 });

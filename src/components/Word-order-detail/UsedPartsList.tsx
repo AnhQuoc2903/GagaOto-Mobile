@@ -4,11 +4,13 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 interface UsedPartsListProps {
   usedParts: any[];
   onRemovePart: (partId: string) => void;
+  isLocked: boolean;
 }
 
 export default function UsedPartsList({
   usedParts,
   onRemovePart,
+  isLocked,
 }: UsedPartsListProps) {
   if (usedParts.length === 0) {
     return (
@@ -35,7 +37,8 @@ export default function UsedPartsList({
               <Text style={styles.partQuantity}>Quantity: {item.quantity}</Text>
             </View>
             <TouchableOpacity
-              style={styles.removeButton}
+              disabled={isLocked}
+              style={[styles.removeButton, isLocked && styles.disabledButton]}
               onPress={() => onRemovePart(item._id)}
             >
               <Ionicons name="trash-outline" size={20} color="#ef4444" />
@@ -146,5 +149,8 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "600",
     color: "#3b82f6",
+  },
+  disabledButton: {
+    opacity: 0.5,
   },
 });

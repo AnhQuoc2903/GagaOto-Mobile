@@ -8,3 +8,9 @@ export const loginApi = async (email: string, password: string) => {
 
   return res.data;
 };
+
+export const getMeApi = async () => {
+  const res = await API.get("/auth/me");
+
+  return res.data;
+};

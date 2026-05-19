@@ -23,8 +23,7 @@ export default function Login() {
 
       Alert.alert("Login success");
 
-      // 🔥 chuyển sang HOME
-      router.replace("/home");
+      router.replace("/dashboard");
     } catch (err: any) {
       console.log(err);
 

@@ -58,6 +58,7 @@ export default function WorkOrderDetail() {
   const paidAmount = data?.paidAmount || 0;
   const totalAmount = data?.total || 0;
   const remainingAmount = totalAmount - paidAmount;
+  const isLocked = data?.status === "DONE" || data?.status === "CANCELLED";
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -271,7 +272,12 @@ export default function WorkOrderDetail() {
       {/* Action Buttons */}
       <View style={styles.actionButtons}>
         <TouchableOpacity
-          style={[styles.actionButton, styles.addPartButton]}
+          style={[
+            styles.actionButton,
+            styles.addPartButton,
+            isLocked && styles.disabledButton,
+          ]}
+          disabled={isLocked}
           onPress={() => setShowAddPartModal(true)}
         >
           <Ionicons name="add-circle-outline" size={24} color="#fff" />
@@ -279,7 +285,12 @@ export default function WorkOrderDetail() {
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={[styles.actionButton, styles.uploadButton]}
+          style={[
+            styles.actionButton,
+            styles.uploadButton,
+            isLocked && styles.disabledButton,
+          ]}
+          disabled={isLocked}
           onPress={handleUploadImage}
         >
           <Ionicons name="cloud-upload-outline" size={24} color="#fff" />
@@ -300,8 +311,9 @@ export default function WorkOrderDetail() {
             data?.paymentStatus === "PAID"
               ? styles.paidButton
               : styles.paymentButton,
+            isLocked && styles.disabledButton,
           ]}
-          disabled={data?.paymentStatus === "PAID"}
+          disabled={data?.paymentStatus === "PAID" || isLocked}
           onPress={() => setShowPaymentModal(true)}
         >
           <Ionicons
@@ -340,11 +352,13 @@ export default function WorkOrderDetail() {
       <UsedPartsList
         usedParts={data?.usedParts || []}
         onRemovePart={handleRemovePart}
+        isLocked={isLocked}
       />
 
       <ImagesList
         images={data?.images || []}
         onDeleteImage={handleDeleteImage}
+        isLocked={isLocked}
       />
 
       <HistoryList history={data?.history || []} />
@@ -467,5 +481,8 @@ const styles = StyleSheet.create({
   },
   paidButton: {
     backgroundColor: "#6b7280",
+  },
+  disabledButton: {
+    opacity: 0.5,
   },
 });
