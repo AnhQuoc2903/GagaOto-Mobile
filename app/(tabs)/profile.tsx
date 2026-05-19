@@ -135,7 +135,7 @@ export default function Profile() {
   if (loading) {
     return (
       <View style={styles.loading}>
-        <ActivityIndicator size="large" color="#6366f1" />
+        <ActivityIndicator size="large" color="#3b82f6" />
       </View>
     );
   }
@@ -149,7 +149,7 @@ export default function Profile() {
       >
         {/* Header Background */}
         <LinearGradient
-          colors={["#6366f1", "#8b5cf6", "#a855f7"]}
+          colors={["#3b82f6", "#2563eb", "#1d4ed8"]}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 1 }}
           style={styles.header}
@@ -200,7 +200,7 @@ export default function Profile() {
               <Ionicons
                 name="person-outline"
                 size={22}
-                color={activeTab === "profile" ? "#6366f1" : "#94a3b8"}
+                color={activeTab === "profile" ? "#3b82f6" : "#94a3b8"}
               />
               <Text
                 style={[
@@ -218,7 +218,7 @@ export default function Profile() {
               <Ionicons
                 name="lock-closed-outline"
                 size={22}
-                color={activeTab === "password" ? "#6366f1" : "#94a3b8"}
+                color={activeTab === "password" ? "#3b82f6" : "#94a3b8"}
               />
               <Text
                 style={[
@@ -237,7 +237,7 @@ export default function Profile() {
                 <Ionicons
                   name="person-circle-outline"
                   size={24}
-                  color="#6366f1"
+                  color="#3b82f6"
                 />
                 <Text style={styles.cardTitle}>Personal Information</Text>
               </View>
@@ -266,7 +266,7 @@ export default function Profile() {
                 onPress={handleUpdateProfile}
               >
                 <LinearGradient
-                  colors={["#6366f1", "#8b5cf6"]}
+                  colors={["#3b82f6", "#2563eb"]}
                   start={{ x: 0, y: 0 }}
                   end={{ x: 1, y: 0 }}
                   style={styles.gradientButton}
@@ -283,7 +283,7 @@ export default function Profile() {
                 <Ionicons
                   name="shield-checkmark-outline"
                   size={24}
-                  color="#6366f1"
+                  color="#3b82f6"
                 />
                 <Text style={styles.cardTitle}>Change Password</Text>
               </View>
@@ -355,7 +355,7 @@ export default function Profile() {
                 <Ionicons
                   name={showPassword ? "eye-off-outline" : "eye-outline"}
                   size={20}
-                  color="#6366f1"
+                  color="#3b82f6"
                 />
                 <Text style={styles.showPasswordText}>
                   {showPassword ? "Hide Password" : "Show Password"}
@@ -367,7 +367,7 @@ export default function Profile() {
                 onPress={handleChangePassword}
               >
                 <LinearGradient
-                  colors={["#ef4444", "#f43f5e"]}
+                  colors={["#ef4444", "#dc2626"]}
                   start={{ x: 0, y: 0 }}
                   end={{ x: 1, y: 0 }}
                   style={styles.gradientButton}
@@ -433,7 +433,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 5,
     right: 5,
-    backgroundColor: "#6366f1",
+    backgroundColor: "#3b82f6",
     borderRadius: 20,
     padding: 8,
     borderWidth: 3,
@@ -490,7 +490,7 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   activeTab: {
-    backgroundColor: "#eef2ff",
+    backgroundColor: "#eff6ff",
   },
   tabText: {
     fontSize: 15,
@@ -498,7 +498,7 @@ const styles = StyleSheet.create({
     color: "#94a3b8",
   },
   activeTabText: {
-    color: "#6366f1",
+    color: "#3b82f6",
   },
   card: {
     backgroundColor: "#fff",
@@ -580,7 +580,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   showPasswordText: {
-    color: "#6366f1",
+    color: "#3b82f6",
     fontSize: 14,
     fontWeight: "600",
   },

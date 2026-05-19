@@ -15,11 +15,11 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 
 import { router } from "expo-router";
 
-import { getCustomersApi } from "../src/api/customer.api";
-import { getUsersApi } from "../src/api/user.api";
-import { getVehiclesApi } from "../src/api/vehicle.api";
+import { getCustomersApi } from "../../src/api/customer.api";
+import { getUsersApi } from "../../src/api/user.api";
+import { getVehiclesApi } from "../../src/api/vehicle.api";
 
-import { createWorkOrderApi } from "../src/api/workOrder.api";
+import { createWorkOrderApi } from "../../src/api/workOrder.api";
 
 export default function CreateWorkOrder() {
   const [customers, setCustomers] = useState<any[]>([]);

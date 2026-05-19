@@ -14,8 +14,8 @@ import {
   View,
 } from "react-native";
 
-import { getInventoriesApi } from "../src/api/inventory.api";
-import { createPaymentApi, getPaymentsApi } from "../src/api/payment.api";
+import { getInventoriesApi } from "../../src/api/inventory.api";
+import { createPaymentApi, getPaymentsApi } from "../../src/api/payment.api";
 import {
   addPartApi,
   deleteImageApi,
@@ -24,16 +24,16 @@ import {
   removePartApi,
   updateStatusApi,
   uploadImagesApi,
-} from "../src/api/workOrder.api";
+} from "../../src/api/workOrder.api";
 
 // Import components
-import AddPartModal from "../src/components/Word-order-detail/AddPartModal";
-import HistoryList from "../src/components/Word-order-detail/HistoryList";
-import ImagesList from "../src/components/Word-order-detail/ImagesList";
-import PaymentModal from "../src/components/Word-order-detail/PaymentModal";
-import PaymentsList from "../src/components/Word-order-detail/PaymentsList";
-import UsedPartsList from "../src/components/Word-order-detail/UsedPartsList";
-import WorkOrderInfo from "../src/components/Word-order-detail/WorkOrderInfo";
+import AddPartModal from "../../src/components/Word-order-detail/AddPartModal";
+import HistoryList from "../../src/components/Word-order-detail/HistoryList";
+import ImagesList from "../../src/components/Word-order-detail/ImagesList";
+import PaymentModal from "../../src/components/Word-order-detail/PaymentModal";
+import PaymentsList from "../../src/components/Word-order-detail/PaymentsList";
+import UsedPartsList from "../../src/components/Word-order-detail/UsedPartsList";
+import WorkOrderInfo from "../../src/components/Word-order-detail/WorkOrderInfo";
 
 export default function WorkOrderDetail() {
   const { id } = useLocalSearchParams();
