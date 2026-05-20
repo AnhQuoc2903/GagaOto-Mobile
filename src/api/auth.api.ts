@@ -14,3 +14,14 @@ export const getMeApi = async () => {
 
   return res.data;
 };
+
+export const refreshTokenAPI = (refreshToken: string) =>
+  API.post("/auth/refresh", {
+    refreshToken,
+  });
+
+// 🔥 NEW
+export const logoutAPI = (refreshToken: string) =>
+  API.post("/auth/logout", {
+    refreshToken,
+  });

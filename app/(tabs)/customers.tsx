@@ -32,7 +32,11 @@ export default function CustomersScreen() {
       setCustomers(data);
       setFilteredCustomers(data);
     } catch (err) {
-      console.log(err);
+      Alert.alert("Error", "Failed to delete customer");
+
+      if (__DEV__) {
+        console.error("Delete customer error:", err);
+      }
     } finally {
       setLoading(false);
       setRefreshing(false);
@@ -83,9 +87,8 @@ export default function CustomersScreen() {
               setCustomers(updatedCustomers);
               setFilteredCustomers(updatedCustomers);
               Alert.alert("Success", "Customer deleted successfully");
-            } catch (err) {
+            } catch {
               Alert.alert("Error", "Failed to delete customer");
-              console.log(err);
             }
           },
         },

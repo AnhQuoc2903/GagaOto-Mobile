@@ -41,11 +41,14 @@ export default function Login() {
     setLoading(true);
     try {
       const data = await loginApi(email, password);
-      await AsyncStorage.setItem("token", data.token);
+      await AsyncStorage.setItem("accessToken", data.accessToken);
+
+      await AsyncStorage.setItem("refreshToken", data.refreshToken);
+
+      await AsyncStorage.setItem("user", JSON.stringify(data.user));
       Alert.alert("Success", "Login successful!");
       router.replace("/(tabs)/dashboard");
     } catch (err: any) {
-      console.log(err);
       Alert.alert("Error", err?.response?.data?.message || "Login failed");
     } finally {
       setLoading(false);

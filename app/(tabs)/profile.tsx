@@ -9,7 +9,6 @@ import { StatusBar } from "expo-status-bar";
 import {
   ActivityIndicator,
   Alert,
-  Dimensions,
   Image,
   ScrollView,
   StyleSheet,
@@ -19,14 +18,12 @@ import {
   View,
 } from "react-native";
 
-import { getMeApi } from "../../src/api/auth.api";
+import { getMeApi, logoutAPI } from "../../src/api/auth.api";
 import {
   changePassword,
   updateProfile,
   uploadAvatar,
 } from "../../src/api/user.api";
-
-const { width } = Dimensions.get("window");
 
 export default function Profile() {
   const [user, setUser] = useState<any>(null);
@@ -125,7 +122,15 @@ export default function Profile() {
         text: "Logout",
         style: "destructive",
         onPress: async () => {
-          await AsyncStorage.removeItem("token");
+          const refreshToken = await AsyncStorage.getItem("refreshToken");
+
+          if (refreshToken) {
+            try {
+              await logoutAPI(refreshToken);
+            } catch {}
+          }
+
+          await AsyncStorage.clear();
           router.replace("/login");
         },
       },
